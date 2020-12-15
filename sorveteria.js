@@ -1,7 +1,7 @@
 const vendas = [];
-let quantidadeDeVendasDoDia = 0;
 let somaDosValoresDoDia = 0;
-let valorMedioDosPedidos = 0;
+let quantidadeDeVendasDoDia = 0;
+let valorMedioDosPedidos = (_somaDosValoresDoDia, _quantidadeDeVendasDoDia) => _somaDosValoresDoDia/_quantidadeDeVendasDoDia;
 
 function pedido (vendaDoDia, nome, valor, sabor, data) {
     this.vendaDoDia = vendaDoDia;
@@ -15,7 +15,7 @@ let vender = (nome, valor, sabor) => {
     quantidadeDeVendasDoDia++;
     vendas.push(new pedido(quantidadeDeVendasDoDia, nome, valor, sabor));
     somaDosValoresDoDia += valor;
-    valorMedioDosPedidos = somaDosValoresDoDia/quantidadeDeVendasDoDia;
+    //valorMedioDosPedidos = somaDosValoresDoDia/quantidadeDeVendasDoDia;
 }
 
 let relatorio = () => {
@@ -23,7 +23,7 @@ let relatorio = () => {
     let pedidoMaisCaro = vendasOrdenadasPorValor[vendasOrdenadasPorValor.length -1];
     let pedidoMaisBarato = vendasOrdenadasPorValor[0];
     
-    console.log(`Olá, hoje nós vendemos ${quantidadeDeVendasDoDia} sorvetes, somando R$${somaDosValoresDoDia}. O preço médio de cada pedido foi ${valorMedioDosPedidos}.`);
+    console.log(`Olá, hoje nós vendemos ${quantidadeDeVendasDoDia} sorvetes, somando R$${somaDosValoresDoDia}. O preço médio de cada pedido foi ${valorMedioDosPedidos(somaDosValoresDoDia, quantidadeDeVendasDoDia)}.`);
     console.log("\nPara uma análise um pouco mais detalhada, segue outras informações:");
     console.log("O pedido mais caro foi: \n");
     console.log(pedidoMaisCaro)
